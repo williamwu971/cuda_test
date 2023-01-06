@@ -37,6 +37,7 @@ int main(int argc, char **argv) {
 
     if (argc != 2) {
         puts("need command line arg");
+        return 1;
     }
 
     /* Fixed seed for illustration */

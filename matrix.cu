@@ -110,7 +110,11 @@ int main(int argc, char **argv) {
     }
 
     // roughly compute speedup
-    if (!all_ok)printf("incorrect results\n");
+    if (!all_ok) {
+        printf("incorrect results\n");
+    } else {
+        puts("results correct");
+    }
 
 
     return 0;

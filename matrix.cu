@@ -33,13 +33,18 @@ void cpu_matrix_mult(const int *h_a, const int *h_b, int *h_result, int m, int n
 }
 
 
-int main() {
+int main(int argc, char **argv) {
+
+    if (argc != 2) {
+        puts("need command line arg");
+    }
+
     /* Fixed seed for illustration */
     srand(time(NULL));
 
-    int m = 2000;
-    int n = 2000;
-    int k = 2000;
+    int m = atoi(argv[1]);
+    int n = m;
+    int k = m;
 
     // allocate memory in host RAM, h_cc is used to store CPU result
     int *h_a, *h_b, *h_c, *h_cc;

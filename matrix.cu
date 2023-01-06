@@ -94,7 +94,7 @@ int main(int argc, char **argv) {
     printf("GPU: %.2fs\n", (double) elapsed / 1000000.0f);
 
     start_timer
-    cpu_matrix_mult(h_a, h_b, h_cc, m, n, k);
+//    cpu_matrix_mult(h_a, h_b, h_cc, m, n, k);
     stop_timer
     printf("CPU: %.2fs\n", (double) elapsed / 1000000.0f);
 

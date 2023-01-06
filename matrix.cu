@@ -37,9 +37,9 @@ int main() {
     /* Fixed seed for illustration */
     srand(time(NULL));
 
-    int m = 9000;
-    int n = 9000;
-    int k = 9000;
+    int m = 2000;
+    int n = 2000;
+    int k = 2000;
 
     // allocate memory in host RAM, h_cc is used to store CPU result
     int *h_a, *h_b, *h_c, *h_cc;
@@ -63,7 +63,7 @@ int main() {
     }
 
     declare_timer
-            start_timer
+    start_timer
 
     // Allocate memory space on the device
     int *d_a, *d_b, *d_c;
@@ -85,10 +85,10 @@ int main() {
     cudaMemcpy(h_c, d_c, sizeof(int) * m * k, cudaMemcpyDeviceToHost);
 
     stop_timer
-            printf("GPU: %.2fs\n", (double) elapsed / 1000000.0f);
+    printf("GPU: %.2fs\n", (double) elapsed / 1000000.0f);
 
     start_timer
-//    cpu_matrix_mult(h_a, h_b, h_cc, m, n, k);
+    cpu_matrix_mult(h_a, h_b, h_cc, m, n, k);
     stop_timer
     printf("CPU: %.2fs\n", (double) elapsed / 1000000.0f);
 

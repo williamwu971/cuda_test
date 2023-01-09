@@ -3,7 +3,7 @@ project(cuda_test CUDA)
 
 set(CMAKE_CUDA_STANDARD 14)
 
-add_executable(cuda_test main.cu)
+add_executable(cuda_test main.cu matrix.cu)
 
 set_target_properties(cuda_test PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON)

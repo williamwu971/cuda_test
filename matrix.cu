@@ -19,8 +19,8 @@ __global__ void gpu_matrix_mult(const int *a, const int *b, int *c, int m, int n
 
 void cpu_matrix_mult(const int *h_a, const int *h_b, int *h_result, int m, int n, int k) {
 
-    omp_set_num_threads(10);
-#pragma omp parallel for schedule(dynamic, 10)
+    omp_set_num_threads(9);
+#pragma omp parallel for schedule(dynamic, 1)
     for (int i = 0; i < m; ++i) {
         for (int j = 0; j < k; ++j) {
             int tmp = 0;
@@ -35,7 +35,7 @@ void cpu_matrix_mult(const int *h_a, const int *h_b, int *h_result, int m, int n
 
 int main(int argc, char **argv) {
 
-    if (argc != 2) {
+    if (argc == 1) {
         puts("need command line arg");
         return 1;
     }
@@ -94,7 +94,7 @@ int main(int argc, char **argv) {
     printf("GPU: %.2fs\n", (double) elapsed / 1000000.0f);
 
     start_timer
-//    cpu_matrix_mult(h_a, h_b, h_cc, m, n, k);
+    if (argc==2) cpu_matrix_mult(h_a, h_b, h_cc, m, n, k);
     stop_timer
     printf("CPU: %.2fs\n", (double) elapsed / 1000000.0f);
 
